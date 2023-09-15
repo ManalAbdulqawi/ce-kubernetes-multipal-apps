@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: be-app
+  template:
+    metadata:
+      labels:
+        app: be-app
+    spec:
+      containers:
+        - name: my-be-app-newversion
+          image: public.ecr.aws/o5c5h9o3/bookstore-be-app:1.2
+          ports:
+            - containerPort: 5000
