@@ -4,6 +4,7 @@ metadata:
   name: my-service-be-app
   labels:
     app: my-service-be-app
+    app.kubernetes.io/part-of: bookstore
   annotations:
     prometheus.io/port: "my-service-be-app"
     prometheus.io/scrape: "true"
