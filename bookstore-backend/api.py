@@ -17,6 +17,7 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 metrics = PrometheusMetrics(app)
+metrics.info("app_info","application info",version="1.0.0")
 
 # A List of Dicts to store all of the books
 books = [{
@@ -52,6 +53,8 @@ class BookList(Resource):
     
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
+        @matrics.counter("get_books","Count the invocation by status code",
+        labels={"status_code":lambda r: r.status_code})
 
     def get(self):
         #c = Counter('my_failures', 'Description of counter')
