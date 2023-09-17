@@ -53,7 +53,7 @@ class BookList(Resource):
     
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
-        @matrics.counter("get_books","Count the invocation by status code",
+    @metrics.counter("get_books","Count the invocation by status code",
         labels={"status_code":lambda r: r.status_code})
 
     def get(self):
